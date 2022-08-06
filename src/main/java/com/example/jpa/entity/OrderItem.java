@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="order_item_id")
     private Long id;
 
     @JoinColumn(name = "order_id")
@@ -22,4 +23,12 @@ public class OrderItem {
     private int orderPrice;
 
     private int count;
+
+    public void setOrder(Order order){
+        this.order = order;
+    }
+
+//    public void setItem(Item item){
+//        this.item = item;
+//    }
 }
