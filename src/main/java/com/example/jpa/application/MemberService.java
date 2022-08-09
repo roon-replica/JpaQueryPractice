@@ -1,4 +1,4 @@
-package com.example.jpa.application.member;
+package com.example.jpa.application;
 
 import com.example.jpa.domain.UuidGenerator;
 import com.example.jpa.domain.entity.Member;

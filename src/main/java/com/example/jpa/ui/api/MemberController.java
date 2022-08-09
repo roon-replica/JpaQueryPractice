@@ -1,6 +1,6 @@
 package com.example.jpa.ui.api;
 
-import com.example.jpa.application.member.MemberService;
+import com.example.jpa.application.MemberService;
 import com.example.jpa.ui.dto.request.MemberCreateRequest;
 import com.example.jpa.ui.dto.response.MemberResponse;
 import lombok.RequiredArgsConstructor;
