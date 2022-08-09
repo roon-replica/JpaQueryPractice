@@ -1,10 +1,8 @@
 package com.example.jpa.domain.entity;
 
 import com.example.jpa.domain.value.Address;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.example.jpa.domain.value.MemberId;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,16 +10,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Getter
 @Entity
 public class Member {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="member_id")
-    private Long id;
+    @EmbeddedId
+    private MemberId id;
 
     private String username;
 
@@ -29,15 +25,15 @@ public class Member {
 
     @ElementCollection
     @CollectionTable(
-            name="favorite_foods",
-            joinColumns = @JoinColumn(name="member_id"))
-    @Column(name="food_name")
+            name = "favorite_foods",
+            joinColumns = @JoinColumn(name = "member_id"))
+    @Column(name = "food_name")
     private Set<String> favoriteFoods = new HashSet<>();
 
     @ElementCollection
     @CollectionTable(
-            name="address",
-            joinColumns = @JoinColumn(name="member_id"))
+            name = "address",
+            joinColumns = @JoinColumn(name = "member_id"))
     private List<Address> addressHistory = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
@@ -46,5 +42,13 @@ public class Member {
     public void addOrder(Order order) {
         orders.add(order);
         order.setMember(this);
+    }
+
+    public static Member create(String uuid, String username, Address address) {
+        return Member.builder()
+                .id(MemberId.of(uuid))
+                .username(username)
+                .address(address)
+                .build();
     }
 }

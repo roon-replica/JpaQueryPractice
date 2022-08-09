@@ -1,4 +1,4 @@
-package com.example.jpa.ui.dto;
+package com.example.jpa.ui.dto.request;
 
 import lombok.Getter;
 
