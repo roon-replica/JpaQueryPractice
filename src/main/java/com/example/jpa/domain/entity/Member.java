@@ -44,11 +44,12 @@ public class Member {
         order.setMember(this);
     }
 
-    public static Member create(String uuid, String username, Address address) {
+    public static Member create(String uuid, String username, Address address,Set<String> favoriteFoods) {
         return Member.builder()
                 .id(MemberId.of(uuid))
                 .username(username)
                 .address(address)
+                .favoriteFoods(favoriteFoods)
                 .build();
     }
 }

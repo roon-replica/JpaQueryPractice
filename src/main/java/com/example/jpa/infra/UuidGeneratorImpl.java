@@ -7,10 +7,10 @@ import java.util.UUID;
 
 @Component
 public class UuidGeneratorImpl implements UuidGenerator {
-    private final int UUID_LENGTH = 8;
 
     @Override
     public String generate() {
+        int UUID_LENGTH = 8;
         return UUID.randomUUID().toString().substring(0, UUID_LENGTH);
     }
 }

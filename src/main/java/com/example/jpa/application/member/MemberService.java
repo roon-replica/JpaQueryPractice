@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -19,7 +21,7 @@ public class MemberService {
     private final UuidGenerator uuidGenerator;
 
     @Transactional
-    public String createMember(String username, String city, String street, String zipcode) {
+    public String createMember(String username, String city, String street, String zipcode, Set<String> favoriteFoods) {
         var member = Member.create(
                 uuidGenerator.generate(),
                 username,
@@ -27,7 +29,8 @@ public class MemberService {
                         .city(city)
                         .street(street)
                         .zipcode(zipcode)
-                        .build()
+                        .build(),
+                favoriteFoods
         );
 
         return memberRepository.save(member)
