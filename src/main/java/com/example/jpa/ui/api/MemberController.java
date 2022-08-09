@@ -17,4 +17,9 @@ public class MemberController {
         return memberService.createMember(request.getUsername(), request.getCity(), request.getStreet(), request.getZipcode());
     }
 
+    @GetMapping("/{memberId}")
+    public MemberResponse getMember(@PathVariable String memberId) {
+        return memberService.getMember(memberId);
+    }
+
 }
