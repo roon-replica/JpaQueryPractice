@@ -1,5 +1,6 @@
-package com.example.jpa.entity;
+package com.example.jpa.domain.value;
 
+import com.example.jpa.domain.entity.PhoneServiceProvider;
 import lombok.Getter;
 
 import javax.persistence.Embeddable;

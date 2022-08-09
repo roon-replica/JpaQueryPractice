@@ -1,4 +1,4 @@
-package com.example.jpa.entity;
+package com.example.jpa.domain.entity;
 
 import lombok.Getter;
 

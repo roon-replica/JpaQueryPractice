@@ -1,5 +1,6 @@
-package com.example.jpa.entity;
+package com.example.jpa.domain.entity;
 
+import com.example.jpa.domain.value.OrderStatus;
 import lombok.Getter;
 
 import javax.persistence.*;
