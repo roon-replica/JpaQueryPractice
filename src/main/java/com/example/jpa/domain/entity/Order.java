@@ -1,5 +1,6 @@
 package com.example.jpa.domain.entity;
 
+import com.example.jpa.domain.value.OrderId;
 import com.example.jpa.domain.value.OrderStatus;
 import lombok.Getter;
 
@@ -12,10 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "orders") // 이거 안 붙이니 auto-ddl 에러났음..!! mysql에서 order이 무슨 예약어같은거 인가 봄....
 public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private Long id;
+    @EmbeddedId
+    private OrderId id;
 
     @JoinColumn(name = "member_id")
     @ManyToOne(fetch = FetchType.LAZY)

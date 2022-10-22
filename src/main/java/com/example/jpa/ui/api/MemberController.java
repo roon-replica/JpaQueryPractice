@@ -19,8 +19,8 @@ public class MemberController {
         return memberService.createMember(request.getUsername(), request.getCity(), request.getStreet(), request.getZipcode(), new HashSet<>(request.getFavoriteFoods()));
     }
 
-    @GetMapping("/{memberId}")
-    public MemberResponse getMember(@PathVariable String memberId) {
+    @GetMapping
+    public MemberResponse getMember(@RequestParam(name = "id") String memberId) {
         return memberService.getMember(memberId);
     }
 
